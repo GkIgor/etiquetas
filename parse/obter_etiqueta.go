@@ -32,8 +32,23 @@ func ObterEtiquetas(path string, prefixo string, arquivos *[]Arquivo) {
 	if erro != nil {
 		etiqueta := new(Etiqueta)
 
+		var tipo int
+
+		switch prefixo {
+		case "sas06":
+			tipo = TYPE_06
+		case "sas16":
+			tipo = TYPE_16
+		case "sas06c":
+			tipo = TYPE_06C
+		case "sas16c":
+			tipo = TYPE_16C
+		default:
+			panic("Tipo de etiqueta desconhecido")
+		}
+
 		for _, linha := range etqParsed {
-			SepararEtiqueta(linha, etiqueta)
+			SepararEtiqueta(linha, etiqueta, tipo)
 		}
 	}
 }
