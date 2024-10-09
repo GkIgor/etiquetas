@@ -1,7 +1,5 @@
 package parse
 
-import "strings"
-
 func SepararEtiqueta(linha string, etiqueta *Etiqueta, tipo int) {
 	// PARAMOS AQUI!!!!!
 	// TODO: PARA CADA LINHA, COMEÇAR A GERAR UMA NOVA ETIQUETA
@@ -21,13 +19,7 @@ func separarTipo06(linha string, etiqueta *Etiqueta) {
 		etiqueta.Identificador = "sas06"
 	}
 
-	if strings.HasPrefix(linha, START) {
-		etiqueta.body += linha + "\n"
-	}
-
-	if strings.HasPrefix(linha, POSITION_1) && strings.HasPrefix(etiqueta.body, START) {
-		etiqueta.body += linha + "\n"
-	}
+	etiqueta.body += linha + "\n"
 
 	// TODO: PARAMOS AQUI!
 	// LEMBRAR DE TERMINAR DE ANEXAR AS LINHAS NO CORPO DA ETIQUETA
